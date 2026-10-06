@@ -4,7 +4,6 @@
 <meta charset="utf-8">
 <meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
 <title>Módulo de oficina en RA</title>
-<link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Barlow+Semi+Condensed:wght@600&family=Barlow:wght@400;500&family=IBM+Plex+Mono:wght@500&display=swap">
 <style>
 :root { --bg:#F3F4F1; --panel:#FFFFFF; --ink:#1F2622; --muted:#5C665F; --line:#D5D9D2; --accent:#C2601E; --accent-ink:#FFFFFF; --stage:#E6E9E3; }
 @media (prefers-color-scheme: dark) { :root { --bg:#161A17; --panel:#1E2420; --ink:#E7EBE5; --muted:#9BA59D; --line:#343D37; --accent:#E07A35; --accent-ink:#1A0E05; --stage:#252C27; color-scheme: dark; } }
@@ -24,7 +23,7 @@ model-viewer { width: 100%; height: min(62vh, 520px); min-height: 320px; display
 ol { margin: 0; padding-left: 20px; display: grid; gap: 4px; }
 .small { font-size: 14px; color: var(--muted); }
 </style>
-<script type="module" src="https://cdn.jsdelivr.net/npm/@google/model-viewer@4.3.1/dist/model-viewer.min.js"></script>
+<script type="module" src="model-viewer.min.js"></script>
 </head>
 <body>
 <div class="wrap">
@@ -51,6 +50,7 @@ ol { margin: 0; padding-left: 20px; display: grid; gap: 4px; }
       <li>Apunta al piso y mueve el teléfono despacio hasta que detecte la superficie.</li>
       <li>El módulo aparece a escala 1:1. Camina alrededor y entra por la puerta.</li>
     </ol>
+    <p><a href="ar.html">¿No ves el modelo? Abre la versión de respaldo</a></p>
     <p class="small">Necesita "Google Play Services for AR" (ARCore). Las zapatas quedan sobre el piso porque el visor apoya el modelo en su punto más bajo.</p>
   </div>
 </div>
@@ -60,6 +60,7 @@ const msg = (t, e) => { est.textContent = t; est.classList.toggle('err', !!e); }
 mv.addEventListener('load', () => setTimeout(() => msg(mv.canActivateAR
   ? 'Modelo listo. Toca "Ver en tu espacio".'
   : 'Modelo listo en 3D. Este equipo o navegador no reporta realidad aumentada; ábrelo en Chrome del teléfono.'), 400));
+setTimeout(() => { if (!customElements.get('model-viewer')) msg('El visor 3D no arrancó en este navegador. Usa el enlace de respaldo: ar.html', true); }, 8000);
 mv.addEventListener('error', () => msg('No se pudo cargar el modelo. Revisa que modulo_oficina.glb esté en la misma carpeta que esta página.', true));
 mv.addEventListener('ar-status', e => { if (e.detail.status === 'failed') msg('No se pudo abrir la realidad aumentada. Revisa que el teléfono tenga Google Play Services for AR.', true); });
 </script>
