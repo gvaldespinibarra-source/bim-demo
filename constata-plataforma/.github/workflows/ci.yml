@@ -1,0 +1,36 @@
+# Compila cada mini app por separado. Si una falla, GitHub marca cuál, sin afectar a las otras.
+name: Revisión de mini apps
+
+on:
+  push:
+    branches: [main]
+  pull_request:
+
+jobs:
+  listar:
+    runs-on: ubuntu-latest
+    outputs:
+      apps: ${{ steps.apps.outputs.apps }}
+    steps:
+      - uses: actions/checkout@v4
+      - id: apps
+        # Solo las carpetas de apps/ que ya tienen package.json (las planeadas se ignoran).
+        run: echo "apps=$(ls apps/*/package.json | xargs -n1 dirname | xargs -n1 basename | jq -R . | jq -cs .)" >> "$GITHUB_OUTPUT"
+
+  compilar:
+    needs: listar
+    runs-on: ubuntu-latest
+    strategy:
+      fail-fast: false
+      matrix:
+        app: ${{ fromJson(needs.listar.outputs.apps) }}
+    name: ${{ matrix.app }}
+    steps:
+      - uses: actions/checkout@v4
+      - uses: actions/setup-node@v4
+        with:
+          node-version-file: .nvmrc
+          cache: npm
+      - run: npm ci
+      - run: npm run typecheck -w @constata/${{ matrix.app }}
+      - run: npm run build -w @constata/${{ matrix.app }}
