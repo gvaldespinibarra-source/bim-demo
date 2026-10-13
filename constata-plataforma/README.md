@@ -12,6 +12,7 @@ los portales de la plataforma, cada uno como una **mini app independiente**.
 | [`apps/director`](apps/director) | Director: revisar y aprobar informes, bitácora | Planeada |
 | [`apps/comercial`](apps/comercial) | Socia comercial: clientes, contactos, altas | Planeada |
 | [`packages/marca`](packages/marca) | Compartido: colores, fuentes, logo, etiquetas de estatus | ✅ |
+| [`packages/seguridad`](packages/seguridad) | Compartido: encabezados y reglas de seguridad | ✅ |
 
 ## Ver el sitio en tu computadora
 
@@ -30,3 +31,4 @@ Abre http://localhost:3000. Los cambios que guardes se ven al instante.
 2. [Arquitectura modular](docs/02-arquitectura-modular.md): por qué mini apps y cómo se unen.
 3. [Mapa de pantallas](docs/03-mapa-de-pantallas.md): qué pantalla del diseño va en qué mini app.
 4. [Hoja de ruta](docs/04-hoja-de-ruta.md): el orden en que vamos a construir.
+5. [Plan de seguridad](docs/05-seguridad.md): quién cuida qué, defensas y la puerta de control antes de datos reales.

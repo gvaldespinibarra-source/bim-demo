@@ -3,6 +3,15 @@
 Orden pensado para tener algo útil publicado cuanto antes y no tocar datos de candidatos
 hasta que el aspecto legal y la seguridad estén listos.
 
+## Etapa 0 · Seguridad base (prioridad, ver `05-seguridad.md`)
+- [x] Encabezados de seguridad compartidos (`packages/seguridad`) aplicados al sitio
+- [x] Formulario protegido: validación en servidor, límite de tamaño, campo trampa
+- [x] Dependabot y CI configurados
+- [ ] Gus: gestor de contraseñas y doble factor en GitHub, Vercel, Supabase, correo y dominio
+- [ ] Activar escaneo de secretos y protección de la rama `main` en el repo propio
+- [ ] Firewall de Vercel con límite de intentos al publicar
+- [ ] Cotizar póliza de ciberriesgo y prueba de penetración
+
 ## Etapa 1 · Presencia (en curso)
 - [x] Monorepo y marca compartida
 - [x] Mini app `sitio` con diseño Claridad, formulario de piloto con validación

@@ -1,0 +1,10 @@
+{
+  "name": "@constata/seguridad",
+  "version": "0.1.0",
+  "private": true,
+  "description": "Reglas de seguridad comunes a todas las mini apps: encabezados HTTP y política de contenido.",
+  "type": "module",
+  "exports": {
+    "./encabezados": "./encabezados.mjs"
+  }
+}

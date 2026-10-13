@@ -1,7 +1,13 @@
+import { encabezadosSeguridad } from "@constata/seguridad/encabezados";
+
 /** @type {import('next').NextConfig} */
 const nextConfig = {
   // La marca vive en packages/marca como código fuente; Next la compila junto con la app.
   transpilePackages: ["@constata/marca"],
+
+  // No anunciar qué tecnología usamos, y aplicar los encabezados de seguridad comunes.
+  poweredByHeader: false,
+  headers: async () => encabezadosSeguridad(),
 
   // Unión de mini apps ("multi-zones"): cuando cada portal esté publicado,
   // el sitio redirige sus rutas a la app correspondiente bajo el mismo dominio.

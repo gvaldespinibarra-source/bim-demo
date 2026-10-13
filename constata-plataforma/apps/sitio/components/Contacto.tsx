@@ -65,6 +65,13 @@ export function Contacto() {
               ))}
             </select>
           </label>
+          {/* Campo trampa para robots: oculto a personas y a lectores de pantalla. */}
+          <div aria-hidden="true" style={{ position: "absolute", left: "-10000px", width: 1, height: 1, overflow: "hidden" }}>
+            <label>
+              No llenar
+              <input name="sitio_web" type="text" tabIndex={-1} autoComplete="off" defaultValue="" />
+            </label>
+          </div>
           <p className="completo suave" style={{ margin: 0, fontSize: 13 }}>
             Usaremos estos datos solo para contactarte sobre el piloto. Consulta el{" "}
             <a href="/legal#aviso">aviso de privacidad</a>.

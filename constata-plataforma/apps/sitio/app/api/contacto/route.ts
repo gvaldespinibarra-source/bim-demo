@@ -10,13 +10,28 @@ import { NextResponse } from "next/server";
 */
 
 const CORREO = /^[^\s@]+@[^\s@]+\.[^\s@]+$/;
+const TAMANO_MAXIMO = 4_000; // bytes; una solicitud legítima pesa menos de 1 KB
 
 export async function POST(request: Request) {
+  // Solo JSON y de tamaño razonable: corta envíos automatizados y cargas gigantes.
+  if (!request.headers.get("content-type")?.startsWith("application/json")) {
+    return NextResponse.json({ ok: false }, { status: 415 });
+  }
+  const cuerpo = await request.text();
+  if (cuerpo.length > TAMANO_MAXIMO) {
+    return NextResponse.json({ ok: false }, { status: 413 });
+  }
+
   let datos: Record<string, unknown>;
   try {
-    datos = await request.json();
+    datos = JSON.parse(cuerpo);
   } catch {
     return NextResponse.json({ ok: false }, { status: 400 });
+  }
+
+  // Campo trampa: invisible para personas, los robots lo llenan. Se responde "ok" sin guardar nada.
+  if (typeof datos.sitio_web === "string" && datos.sitio_web !== "") {
+    return NextResponse.json({ ok: true });
   }
 
   const texto = (v: unknown) => (typeof v === "string" ? v.trim().slice(0, 200) : "");

@@ -34,6 +34,14 @@ en `apps/sitio/next.config.mjs`. Ver `docs/02-arquitectura-modular.md`.
 Next.js 16 (App Router, TypeScript), React 19, npm workspaces. Fuentes autoalojadas con
 @fontsource (no se piden a Google). Siguiente: Supabase (Postgres + Auth + Storage) en Fase 1.
 
+## Seguridad (prioridad de Gus, ver `docs/05-seguridad.md`)
+- Toda mini app usa `encabezadosSeguridad()` de `packages/seguridad` y `poweredByHeader: false`.
+- Validar todo en el servidor; nunca confiar en lo que llega del navegador.
+- Permisos por fila en la base desde la primera tabla. Ningún dato real antes de pasar la
+  "puerta de control" (sección 6 del plan de seguridad).
+- Responsabilidad legal no se delega: se usa infraestructura certificada (Vercel, Supabase),
+  contratos y seguro para repartir trabajo y riesgo.
+
 ## Datos y legalidad (no negociable)
 - Datos de candidatos son personales sensibles (LFPDPPP). Nunca datos reales en el repo, en ejemplos ni en logs.
 - Nunca crear campos para salud, embarazo, religión, preferencia sexual, origen étnico, sindicato, política o familiares.
@@ -44,4 +52,8 @@ Next.js 16 (App Router, TypeScript), React 19, npm workspaces. Fuentes autoaloja
 - 2026-10-12: monorepo creado. Mini app `sitio` funcionando (portada, servicios, proceso,
   cumplimiento, paquetes, contacto con validación, páginas /legal y /entrar provisionales).
   El formulario de contacto aún no guarda: solo valida y registra en logs.
-- Siguiente: conectar contacto a Supabase, luego mini app `acceso`. Ver `docs/04-hoja-de-ruta.md`.
+- 2026-10-13: Gus aprobó el boceto de 14 funciones independientes (pantallas + motores sobre un
+  expediente común) y pidió empezar por seguridad. Hecho: `packages/seguridad` (encabezados),
+  formulario endurecido, Dependabot, plan `docs/05-seguridad.md`.
+- Pendiente: reorganizar carpetas de portales a funciones; repo propio `constata-plataforma`
+  (Gus debe crearlo vacío); acciones de cuentas de Gus (sección 7 del plan).
