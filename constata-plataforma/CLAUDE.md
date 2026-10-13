@@ -29,6 +29,8 @@ en `apps/sitio/next.config.mjs`. Ver `docs/02-arquitectura-modular.md`.
 - `npm install` en la raíz instala todo.
 - `npm run dev:sitio` → http://localhost:3000
 - `npm run typecheck` y `npm run build` antes de cada push.
+- Cambios a la base: nueva migración en `supabase/migrations/` (nunca editar una ya aplicada en
+  Supabase) y `supabase/probar.sh` debe pasar; agrega una prueba de ataque por cada regla nueva.
 
 ## Stack
 Next.js 16 (App Router, TypeScript), React 19, npm workspaces. Fuentes autoalojadas con
@@ -55,5 +57,7 @@ Next.js 16 (App Router, TypeScript), React 19, npm workspaces. Fuentes autoaloja
 - 2026-10-13: Gus aprobó el boceto de 14 funciones independientes (pantallas + motores sobre un
   expediente común) y pidió empezar por seguridad. Hecho: `packages/seguridad` (encabezados),
   formulario endurecido, Dependabot, plan `docs/05-seguridad.md`.
+- 2026-10-13: expediente común (`supabase/migrations`), pasos del estudio, RLS y bitácora
+  inmodificable; 37 comprobaciones en `supabase/pruebas`, también en CI. Ver `docs/06-expediente.md`.
 - Pendiente: reorganizar carpetas de portales a funciones; repo propio `constata-plataforma`
   (Gus debe crearlo vacío); acciones de cuentas de Gus (sección 7 del plan).

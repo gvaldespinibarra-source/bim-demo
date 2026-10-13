@@ -11,6 +11,8 @@ hasta que el aspecto legal y la seguridad estén listos.
 - [ ] Activar escaneo de secretos y protección de la rama `main` en el repo propio
 - [ ] Firewall de Vercel con límite de intentos al publicar
 - [ ] Cotizar póliza de ciberriesgo y prueba de penetración
+- [x] Expediente común: tablas, pasos del estudio, permisos por fila y bitácora inmodificable (`docs/06-expediente.md`)
+- [x] 37 comprobaciones de seguridad de la base, automáticas en cada cambio
 
 ## Etapa 1 · Presencia (en curso)
 - [x] Monorepo y marca compartida
@@ -20,7 +22,7 @@ hasta que el aspecto legal y la seguridad estén listos.
 - [ ] Definir razón social de la S.A.S. y ponerla en el pie
 
 ## Etapa 2 · Captar clientes
-- [ ] Crear proyecto Supabase (plan Pro al tener clientes reales)
+- [ ] Crear proyecto Supabase y aplicar el expediente (plan Pro al tener clientes reales)
 - [ ] Guardar solicitudes de piloto en Supabase y avisar por correo
 - [ ] Mini app `comercial`: ver solicitudes de contacto y dar de alta empresas
 

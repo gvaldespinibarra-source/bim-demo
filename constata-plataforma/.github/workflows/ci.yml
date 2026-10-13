@@ -17,6 +17,25 @@ jobs:
         # Solo las carpetas de apps/ que ya tienen package.json (las planeadas se ignoran).
         run: echo "apps=$(ls apps/*/package.json | xargs -n1 dirname | xargs -n1 basename | jq -R . | jq -cs .)" >> "$GITHUB_OUTPUT"
 
+  # Aplica el expediente a una base desechable y lanza los ataques de prueba.
+  # Si alguna regla de seguridad se rompe, este paso queda en rojo.
+  base-de-datos:
+    runs-on: ubuntu-latest
+    services:
+      postgres:
+        image: postgres:16
+        env:
+          POSTGRES_PASSWORD: postgres
+        ports: ["5432:5432"]
+        options: --health-cmd pg_isready --health-interval 5s --health-timeout 5s --health-retries 10
+    env:
+      PGHOST: localhost
+      PGUSER: postgres
+      PGPASSWORD: postgres
+    steps:
+      - uses: actions/checkout@v4
+      - run: ./supabase/probar.sh
+
   compilar:
     needs: listar
     runs-on: ubuntu-latest
