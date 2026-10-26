@@ -1,0 +1,51 @@
+/*
+  CONSTATA · propuesta Claridad
+  Fuente: canvas "CONSTATA — Sitio web, 4 propuestas" (8 oct 2026).
+  Cambia un color aquí y cambia en todas las mini apps.
+*/
+:root {
+  /* Tinta y texto */
+  --c-tinta: #17202b;
+  --c-texto: #3a4452;
+  --c-texto-suave: #4a5563;
+  --c-texto-tenue: #8c97a6;
+
+  /* Acento (azul Claridad) */
+  --c-acento: #2140c9;
+  --c-acento-hover: #16309e;
+  --c-acento-claro: #e6ebfb;
+  --c-acento-fondo: #eef1fb;
+
+  /* Superficies y bordes */
+  --c-fondo: #ffffff;
+  --c-fondo-suave: #f4f6f9;
+  --c-borde: #e4e7ec;
+  --c-borde-tenue: #eef0f3;
+  --c-borde-campo: #c9cfd8;
+  --c-oscuro-linea: #2e3a49;
+  --c-oscuro-texto: #c9d1dc;
+
+  /* Estatus del informe: cada uno con texto y fondo */
+  --c-ok: #1e6b44;
+  --c-ok-fondo: #e3f2ea;
+  --c-aviso: #7a4f00;
+  --c-aviso-fondo: #fcefd2;
+  --c-error: #8a2c2c;
+  --c-error-fondo: #f6e3e3;
+  --c-neutro: #3a4452;
+  --c-neutro-fondo: #eceef1;
+
+  /* Tipografía (se cargan con @constata/marca/fuentes) */
+  --f-titulo: "Schibsted Grotesk Variable", system-ui, sans-serif;
+  --f-texto: "Hanken Grotesk Variable", system-ui, sans-serif;
+
+  /* Radios */
+  --r-chico: 8px;
+  --r-campo: 12px;
+  --r-tarjeta: 18px;
+  --r-bloque: 22px;
+  --r-pastilla: 999px;
+
+  /* Ancho máximo del contenido */
+  --ancho: 1120px;
+}

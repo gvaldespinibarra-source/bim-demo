@@ -1,0 +1,16 @@
+# Revisa cada semana si alguna librería tiene una falla de seguridad conocida
+# y propone la actualización como pull request para que la revisemos.
+version: 2
+updates:
+  - package-ecosystem: npm
+    directory: "/"
+    schedule:
+      interval: weekly
+    open-pull-requests-limit: 5
+    groups:
+      menores:
+        update-types: [minor, patch]
+  - package-ecosystem: github-actions
+    directory: "/"
+    schedule:
+      interval: monthly
